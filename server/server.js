@@ -23,6 +23,9 @@ else if (process.env.NODE_ENV === 'production') {
 }
 
 // specify the api path for the server to use
+app.get("/", (req, res) =>{
+    res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">VCS API</h1>');
+});
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -34,3 +37,4 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(PORT, () => {
     console.log(`server listening on http://localhost:${PORT}`)
 })
+
