@@ -2,9 +2,13 @@ import express from 'express'
 import path from 'path'
 import favicon from 'serve-favicon'
 import dotenv from 'dotenv'
-
 // import the router from your routes file
-
+import DetailsRouter from './routes/details.js'
+import EarringsRouter from './routes/earringDesigns.js'
+import NecklaceRouter from './routes/necklaceDesign.js'
+import BraceletRouter from './routes/braceletDesign.js'
+import RingRouter from './routes/ringDesign.js'
+import JewelrySetRouter from './routes/jewelrySet.js'
 
 dotenv.config()
 
@@ -38,3 +42,14 @@ app.listen(PORT, () => {
     console.log(`server listening on http://localhost:${PORT}`)
 })
 
+app.use('/details', DetailsRouter);
+
+app.use('/earrings', EarringsRouter);
+
+app.use('/bracelets', BraceletRouter);
+
+app.use('/necklaces', NecklaceRouter);
+
+app.use('/rings', RingRouter);
+
+app.use('/jewerySets', JewelrySetRouter);

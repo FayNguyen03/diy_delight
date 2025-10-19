@@ -96,7 +96,8 @@ const createRingDesignTable = async ()=> {
 
         CREATE TABLE IF NOT EXISTS ringDesign (
             id SERIAL PRIMARY KEY,
-            createdOn DATE NOT NULL,
+            createdOn TIMESTAMP NOT NULL,
+            modifiedOn TIMESTAMP NOT NULL,
             material INTEGER NOT NULL REFERENCES material(id),
             stone INTEGER REFERENCES stone(id),
             engraving BOOLEAN NOT NULL,
@@ -120,12 +121,11 @@ const createNecklaceDesignTable = async ()=> {
 
         CREATE TABLE IF NOT EXISTS necklaceDesign (
             id SERIAL PRIMARY KEY,
-            createdOn DATE NOT NULL,
+            createdOn TIMESTAMP NOT NULL,
+            modifiedOn TIMESTAMP NOT NULL,
             material INTEGER NOT NULL REFERENCES material(id),
             stone INTEGER REFERENCES stone(id),
             charm INTEGER REFERENCES charm(id),
-            engraving BOOLEAN NOT NULL,
-            engravingContent VARCHAR(100),
             price INTEGER NOT NULL
         );
     `;
@@ -145,7 +145,8 @@ const createBraceletDesignTable = async ()=> {
 
         CREATE TABLE IF NOT EXISTS braceletDesign (
             id SERIAL PRIMARY KEY,
-            createdOn DATE NOT NULL,
+            createdOn TIMESTAMP NOT NULL,
+            modifiedOn TIMESTAMP NOT NULL,
             material INTEGER NOT NULL REFERENCES material(id),
             stone INTEGER REFERENCES stone(id),
             charm INTEGER REFERENCES charm(id),
@@ -170,7 +171,8 @@ const createEarringDesignTable = async ()=> {
 
         CREATE TABLE IF NOT EXISTS earringDesign (
             id SERIAL PRIMARY KEY,
-            createdOn DATE NOT NULL,
+            createdOn TIMESTAMP NOT NULL,
+            modifiedOn TIMESTAMP NOT NULL,
             material INTEGER NOT NULL REFERENCES material(id),
             earringStyle INTEGER NOT NULL REFERENCES earringStyle(id),
             leftEarring BOOLEAN NOT NULL,
@@ -201,7 +203,8 @@ const createJewelrySetTable = async ()=> {
             braceletId INTEGER NOT NULL REFERENCES braceletDesign(id),
             ringId INTEGER NOT NULL REFERENCES ringDesign(id),
             earringId INTEGER NOT NULL REFERENCES earringDesign(id),
-            createdOn DATE NOT NULL
+            createdOn TIMESTAMP NOT NULL,
+            modifiedOn TIMESTAMP NOT NULL
         );
     `;
 
