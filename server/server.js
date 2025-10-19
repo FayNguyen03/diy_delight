@@ -52,4 +52,4 @@ app.use('/necklaces', NecklaceRouter);
 
 app.use('/rings', RingRouter);
 
-app.use('/jewerySets', JewelrySetRouter);
+app.use('/jewelrySets', JewelrySetRouter);

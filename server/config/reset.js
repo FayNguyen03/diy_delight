@@ -199,10 +199,10 @@ const createJewelrySetTable = async ()=> {
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             price INTEGER NOT NULL,
-            necklaceId INTEGER NOT NULL REFERENCES necklaceDesign(id),
-            braceletId INTEGER NOT NULL REFERENCES braceletDesign(id),
-            ringId INTEGER NOT NULL REFERENCES ringDesign(id),
-            earringId INTEGER NOT NULL REFERENCES earringDesign(id),
+            necklaceId INTEGER REFERENCES necklaceDesign(id),
+            braceletId INTEGER REFERENCES braceletDesign(id),
+            ringId INTEGER REFERENCES ringDesign(id),
+            earringId INTEGER REFERENCES earringDesign(id),
             createdOn TIMESTAMP NOT NULL,
             modifiedOn TIMESTAMP NOT NULL
         );
