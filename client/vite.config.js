@@ -15,9 +15,30 @@ export default defineConfig({
     }
   },
   server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000'
+     proxy: {
+      '/details': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
+      '/earrings': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
+      '/bracelets': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
+      '/necklaces': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
+      '/rings': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
+      '/jewelrySets': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
       }
     }
   }

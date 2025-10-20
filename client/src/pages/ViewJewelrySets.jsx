@@ -1,13 +1,13 @@
 import React from 'react'
 import '../App.css'
 
-const EditCar = () => {
+const ViewJewelrySets = () => {
     
     return (
         <div>
-
+            
         </div>
     )
 }
 
-export default EditCar
+export default ViewJewelrySets

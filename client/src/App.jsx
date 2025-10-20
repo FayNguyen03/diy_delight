@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useRoutes } from 'react-router-dom'
 import Navigation from './components/Navigation'
-import ViewCars from './pages/ViewCars'
-import EditCar from './pages/EditCar'
-import CreateCar from './pages/CreateCar'
-import CarDetails from './pages/CarDetails'
+import DetailsAPI from './services/DetailsAPI'
+import Selection from './components/Selection'
 import './App.css'
 
 const App = () => {
+  const [dataValue, setDataValue] = useState([]);
+  useEffect(() =>{
+    const getData = async () => {
+      const data = await DetailsAPI.getAllCharms();
+      setDataValue(data);
+    };
+    getData();
+  },[]);
+  /*
   let element = useRoutes([
     {
       path: '/',
@@ -25,14 +32,16 @@ const App = () => {
       path: '/edit/:id',
       element: <EditCar title='BOLT BUCKET | Edit' />
     }
-  ])
+  ]);
+  */
+
 
   return (
     <div className='app'>
 
       <Navigation />
-
-      { element }
+      <Selection propertyName="Charms" data={dataValue}/>
+      {/*{ element } */}
 
     </div>
   )

@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
 #root {
-    --font-family: Rubik, Verdana, sans-serif;
-    --primary: rgb(115, 2, 12);
-    --primary-hover: black;
+    --font-family: "Dancing Script", cursive;
+    --primary: white;
+    --primary-hover: white;
     --color: white;
     --h1-color: var(--color);
     --h2-color: var(--color);
@@ -35,7 +35,6 @@
 #root [role=button], #root button, #root input[type=submit] {
     font-family: var(--font-family);
     font-weight: 500;
-    text-transform: uppercase;
     border: 2px solid transparent;
     margin: 10px;
     width: max-content;
