@@ -33,7 +33,7 @@ const Selection = (props) => {
                         style={{
                         background: "rgba(234, 224, 214, 0.5)",
                         border: "2px solid rgba(23, 42, 58, 1)",
-                        borderRadius: "10px",
+                        borderRadius: "20px",
                         padding: "30px",
                         display: "flex",
                         flexDirection: "column",
@@ -65,7 +65,7 @@ const Selection = (props) => {
                                 backgroundPosition: 'center',
                                 width: '200px',
                                 height: '200px',
-                                border: "2px solid rgba(23, 42, 58, 1)",
+                                border: isSelected ? "3px solid rgba(221, 15, 15, 1)" : "2px solid rgba(23, 42, 58, 1)",
                                 cursor: "pointer",
                                 borderRadius: "10%",
                                 transition: "transform 0.18s ease, box-shadow 0.18s ease, border 0.12s ease",

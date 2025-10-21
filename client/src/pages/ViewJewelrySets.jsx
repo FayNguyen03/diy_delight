@@ -1,8 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import JewelrySetsAPI from '../services/JewelrySetsAPI';
 import '../App.css'
 
 const ViewJewelrySets = () => {
-    
+    const [data, setData] = useState([]);
+
+    useEffect(() ={
+        const getData = async () => {
+            const data = await JewelrySetsAPI.getAllJewelrySets();
+            setDataValue(data);
+        };
+        getData();
+    }, []);
+
     return (
         <div>
             
@@ -10,4 +20,4 @@ const ViewJewelrySets = () => {
     )
 }
 
-export default ViewJewelrySets
+export default ViewJewelrySets;

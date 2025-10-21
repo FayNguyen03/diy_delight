@@ -13,6 +13,20 @@ const getAllEarringDesigns = async () =>{
     }
 };
 
+const getEarringById = async (id) =>{
+    try{
+        const response = await fetch(`/earrings/${id}`);
+        if(!response.ok){
+            throw new Error(`Failed to fetch earring designs data: ${response.status}`);
+        }
+        return await response.json();
+    }
+    catch (error){
+        console.error("Service EarringsAPI getEarringById error:", error);
+    }
+};
+
+
 const createEarringDesign = async (event, detail) =>{
     event.preventDefault();
     try{
@@ -35,13 +49,13 @@ const updateEarringDesign = async(event, detail, id) =>{
     event.preventDefault();
     try{
         const options = {
-            method: "", 
+            method: "PATCH", 
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch('/earrings', options);
+        const respose = fetch(`/earrings/${id}`, options);
         //window.location = '/';
     }
     catch(error){
@@ -55,7 +69,7 @@ const deleteEarringDesign = async(event, id) =>{
         const options = {
             method: "DELETE"
         };
-        const respose = fetch('/earrings/${id}', options);
+        const respose = fetch(`/earrings/${id}`, options);
         //window.location = '/';
     }
     catch(error){
@@ -63,6 +77,6 @@ const deleteEarringDesign = async(event, id) =>{
     }
 };
 
-export const EarringsAPI = {getAllEarringDesigns, createEarringDesign};
+export const EarringsAPI = {getAllEarringDesigns, createEarringDesign, getEarringById, deleteEarringDesign, updateEarringDesign};
 
 export default EarringsAPI;
