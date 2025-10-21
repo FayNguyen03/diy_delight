@@ -5,7 +5,7 @@ const charmData = [
 },
 {
     name: "star",
-    img: "https://t3.ftcdn.net/jpg/02/07/13/36/360_F_207133679_tGuezrUoWSoJtNfxXaaK4jSrXpZHNqr6.jpg"
+    img: "https://tjazellehelpbracelets.com/cdn/shop/files/star-charm-with-purple-earth-quartz-charity-bracelet-39135341674742.png"
 },
 {
     name: "circle",
@@ -13,7 +13,7 @@ const charmData = [
 },
 {
     name: "sun",
-    img: "https://www.lunaandstella.com/cdn/shop/products/sun_charm_gold_eecc21b2-e654-452c-b60c-408efd62ad2f_1200x.jpg?v=1478817028"
+    img: "https://www.lunaandstella.com/cdn/shop/products/sun_charm_gold_eecc21b2-e654-452c-b60c-408efd62ad2f_1200x.jpg?"
 },
 {
     name: "moon",
@@ -21,7 +21,7 @@ const charmData = [
 },
 {
     name: "clover",
-    img: "https://www.kay.com/productimages/processed/V-419521000_0_800.jpg"
+    img: "https://oliveavejewelry.com/_next/image?url=https%3A%2F%2Fcdn.oliveavejewelry.com%2Fproduct-catalog-images%2FFour%20Leaf%20Clover%20Charm%2Ffourleafclover_charm_front.png&w=3840&q=75"
 },
 {
     name: "letter initial",
