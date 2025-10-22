@@ -3,7 +3,6 @@ import charmData from "../data/charm.js"
 import stoneData from "../data/stone.js"
 import earringStyleData from "../data/earringStyle.js"
 import materialData from "../data/material.js"
-
 import "./dotenv.js"
 
 //table to store available materials 

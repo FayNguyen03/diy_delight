@@ -35,6 +35,8 @@
 #root [role=button], #root button, #root input[type=submit] {
     font-family: var(--font-family);
     font-weight: 500;
+    fill: transparent;
+    color: black;
     border: 2px solid transparent;
     margin: 10px;
     width: max-content;
@@ -42,6 +44,14 @@
 
 #root [role=button]:hover, #root button:hover, #root input[type=submit]:hover {
     border: 2px solid var(--color);
+}
+
+#root strong{
+    color: black;
+}
+
+#root p{
+    color: black;
 }
 
 #root main {

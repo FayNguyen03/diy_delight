@@ -42,7 +42,7 @@ const getJewelrySetById = async (req, res) =>{
 //POST jewelrysets/
 const createJewelrySet = async (req, res) =>{
     try{
-        const { name, price, necklaceId, braceletId, ringId, earringId } = req.query;
+        const { name, price, necklaceId, braceletId, ringId, earringId } = req.body;
         const currentTime = formatCurrentDateTime();
         const results = await pool.query(`
             INSERT INTO jewelrySet (name, price, necklaceId, braceletId, ringId, earringId, createdOn, modifiedOn)
@@ -63,7 +63,7 @@ const updateJewelrySet = async (req, res) => {
     try{
         const id = parseInt(req.params.id);
         const currentTime = formatCurrentDateTime();
-        const { name, price, necklaceId, braceletId, ringId, earringId } = req.query;
+        const { name, price, necklaceId, braceletId, ringId, earringId } = req.body;
         const results = await pool.query(`
             UPDATE jewelrySet SET name = $1, price = $2, necklaceId = $3, braceletId = $4, ringId = $5, earringId = $6, modifiedOn= $7 WHERE id = $8`,
             [ name, price, necklaceId, braceletId, ringId, earringId, currentTime, id]

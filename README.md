@@ -2,29 +2,31 @@
 
 Submitted by: **Khanh Tra Nguyen Tran**
 
-About this web app: **App description here**
+Serena's Auréline is a creative web app that lets users design their own unique jewelry sets with jewelry pieces (bracelet, necklace, ring, and earrings). Users can choose materials, colors, charms, stones, and personalized engravings to create one-of-a-kind designs that match their style. The app allows users to create, view, edit, and delete their custom jewelry designs, offering a smooth, interactive experience with real-time previews. Whether you prefer elegant gold, playful charms, or minimalist silver, the Serena's Auréline helps you bring your perfect piece of jewelry to life — designed entirely by you.
 
-Time spent: **X** hours
+Time spent: **10** hours
 
 ## Required Features
 
 The following **required** functionality is completed:
 
 <!-- Make sure to check off completed functionality below -->
-- [ ] **The web app uses React to display data from the API.**
-- [ ] **The web app is connected to a PostgreSQL database, with an appropriately structured `CustomItem` table.**
-  - [ ]  **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
-  - [ ]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
-- [ ] **Users can view **multiple** features of the `CustomItem` (e.g. car) they can customize, (e.g. wheels, exterior, etc.)**
-- [ ] **Each customizable feature has multiple options to choose from (e.g. exterior could be red, blue, black, etc.)**
+- [X] **The web app uses React to display data from the API.**
+- [X] **The web app is connected to a PostgreSQL database, with an appropriately structured `CustomItem` table.**
+  - [X]  **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+  <img src='Render.gif' title='Render database' width='' alt='Render database' />
+  - [X]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
+  <img src='Database.gif' title='Database' width='' alt='Database' />
+- [X] **Users can view **multiple** features of the `CustomItem` (e.g. jewelry set) they can customize, (bracelet, necklace, ring, and earrings)**
+- [X] **Each customizable feature has multiple options to choose from**
 - [ ] **On selecting each option, the displayed visual icon for the `CustomItem` updates to match the option the user chose.**
 - [ ] **The price of the `CustomItem` (e.g. car) changes dynamically as different options are selected *OR* The app displays the total price of all features.**
 - [ ] **The visual interface changes in response to at least one customizable feature.**
-- [ ] **The user can submit their choices to save the item to the list of created `CustomItem`s.**
+- [ ] **The user can submit their choices to save the item to the list of created `JewelrySets`s.**
 - [ ] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
-- [ ] **Users can view a list of all submitted `CustomItem`s.**
+- [X] **Users can view a list of all submitted `JewelrySet`s.**
 - [ ] **Users can edit a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
-- [ ] **Users can delete a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
+- [X] **Users can delete a submitted `JewelrySet` from the list view of submitted `JewelrySet`s.**
 - [ ] **Users can update or delete `CustomItem`s that have been created from the detail page.**
 
 
@@ -43,7 +45,7 @@ Here's a walkthrough of implemented required features:
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  GIF tool here
+GIF created with [Kap](https://getkap.co/)
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -51,7 +53,7 @@ GIF created with ...  GIF tool here
 
 ## Notes
 
-Describe any challenges encountered while building the app or any additional context you'd like to add.
+I, again, was struggling with the React front end code. I tried my best to enhance my frontend but it still looks really simple.
 
 ## License
 

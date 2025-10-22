@@ -26,9 +26,7 @@ const getBraceletById = async (id) =>{
     }
 };
 
-
-const createBraceletDesign = async (event, detail) =>{
-    event.preventDefault();
+const createBraceletDesign = async (detail) =>{
     try{
         const options = {
             method: "POST", 
@@ -37,16 +35,15 @@ const createBraceletDesign = async (event, detail) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch('/bracelets', options);
-        //window.location = '/';
+        const response = fetch('/bracelets', options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service BraceletsAPI createBraceletDesign error:", error);
     }
 };
 
-const updateBraceletDesign = async(event, detail, id) =>{
-    event.preventDefault();
+const updateBraceletDesign = async(detail, id) =>{
     try{
         const options = {
             method: "PATCH", 
@@ -55,22 +52,21 @@ const updateBraceletDesign = async(event, detail, id) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch('/bracelets/${id}', options);
-        //window.location = '/';
+        const response = fetch('/bracelets/${id}', options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service BraceletsAPI updateBraceletDesign error:", error);
     }
 };
 
-const deleteBraceletDesign = async(event, id) =>{
-    event.preventDefault();
+const deleteBraceletDesign = async(id) =>{
     try{
         const options = {
             method: "DELETE"
         };
-        const respose = fetch('/bracelets/${id}', options);
-        //window.location = '/';
+        const response = fetch('/bracelets/${id}', options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service BraceletsAPI deleteBraceletDesign error:", error);

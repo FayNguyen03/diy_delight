@@ -3,28 +3,25 @@ import React, {useState, useEffect} from 'react'
 const Selection = (props) => {
     const numberElements = props.data ? Math.max(1, Math.floor(props.data.length / 2)) : 1;
     
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(props.selected);
     const [hovered, setHovered] = useState(null);
     
     const handleSelect = (id) => {
         setSelected(id);
+        if (typeof props.onSelect === 'function') props.onSelect(id);
     };
 
     const handleReset = () => {
         setSelected(null);
     };
     
-    const handleDone = () => {
-        if (selected) alert(`You selected ${props.propertyName} ${selected}`);
-        else alert(`Please select a(n) ${props.propertyName}!`);
-    };
 
     return (
         <div className={props.propertyName} style={{display: "flex", justifyContent: 'center'}}>
             
             {props.data?.length > 0 && (
                 <div className="selection-box" style={{
-                    width: "100%",
+                    minWidth: "800px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -40,7 +37,6 @@ const Selection = (props) => {
                         alignItems: "center",
                         justifyContent: "center",
                         gap: "5%",
-                        width: 'min(1100px, 95%)'
                         }}
                     >
                         <h3>{props.propertyName}</h3>
@@ -134,24 +130,6 @@ const Selection = (props) => {
                             justifyContent: "center",
                             gap: "10%",
                         }}>
-                            <button
-                                onClick={handleDone}
-                                style={{
-                                    background: "rgba(23, 42, 58, 1)",
-                                    color: "white",
-                                    fontWeight: "bold",
-                                    fontSize: "18px",
-                                    border: "none",
-                                    padding: "15px 25px",
-                                    borderRadius: "8px",
-                                    cursor: "pointer",
-                                    transition: "background 0.2s",
-                                }}
-                                onMouseOver={(e) => (e.currentTarget.style.background = "transparent", e.currentTarget.style.border = "2px solid rgba(23, 42, 58, 1)")}
-                                onMouseOut={(e) => (e.currentTarget.style.background = "rgba(23, 42, 58, 1)", e.currentTarget.style.border = "none")}
-                            >
-                                Select
-                            </button>
                             <button
                                 onClick={handleReset}
                                 style={{

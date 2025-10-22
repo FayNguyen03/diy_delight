@@ -26,8 +26,7 @@ const getNecklaceById = async (id) =>{
     }
 };
 
-const createNecklaceDesign = async (event, detail) =>{
-    event.preventDefault();
+const createNecklaceDesign = async (detail) =>{
     try{
         const options = {
             method: "POST", 
@@ -37,15 +36,14 @@ const createNecklaceDesign = async (event, detail) =>{
             body: JSON.stringify(detail)
         };
         const respose = fetch('/necklaces', options);
-        //window.location = '/';
+        window.location = '/';
     }
     catch(error){
         console.error("Service NecklacesAPI createNecklaceDesign error:", error);
     }
 };
 
-const updateNecklaceDesign = async(event, detail, id) =>{
-    event.preventDefault();
+const updateNecklaceDesign = async(detail, id) =>{
     try{
         const options = {
             method: "PATCH", 
@@ -55,27 +53,26 @@ const updateNecklaceDesign = async(event, detail, id) =>{
             body: JSON.stringify(detail)
         };
         const respose = fetch(`/necklaces/${id}`, options);
-        //window.location = '/';
+        window.location = '/';
     }
     catch(error){
         console.error("Service NecklacesAPI updateNecklaceDesign error:", error);
     }
 };
 
-const deleteNecklaceDesign = async(event, id) =>{
-    event.preventDefault();
+const deleteNecklaceDesign = async(id) =>{
     try{
         const options = {
             method: "DELETE"
         };
         const respose = fetch(`/necklaces/${id}`, options);
-        //window.location = '/';
+        window.location = '/';
     }
     catch(error){
         console.error("Service NecklacesAPI deleteNecklaceDesign error:", error);
     }
 };
 
-export const EarringsAPI = {getAllNecklaceDesigns, getNecklaceById, createNecklaceDesign, updateNecklaceDesign, deleteNecklaceDesign};
+export const NecklacesAPI = {getAllNecklaceDesigns, getNecklaceById, createNecklaceDesign, updateNecklaceDesign, deleteNecklaceDesign};
 
-export default EarringsAPI;
+export default NecklacesAPI;

@@ -26,8 +26,7 @@ const getRingById = async (id) =>{
     }
 };
 
-const createRingDesign = async (event, detail) =>{
-    event.preventDefault();
+const createRingDesign = async (detail) =>{
     try{
         const options = {
             method: "POST", 
@@ -36,16 +35,15 @@ const createRingDesign = async (event, detail) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch('/rings', options);
-        //window.location = '/';
+        const response = fetch('/rings', options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service RingsAPI createRingDesign error:", error);
     }
 };
 
-const updateRingDesign = async(event, detail, id) =>{
-    event.preventDefault();
+const updateRingDesign = async(detail, id) =>{
     try{
         const options = {
             method: "PATCH", 
@@ -54,22 +52,21 @@ const updateRingDesign = async(event, detail, id) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch(`/bracelets/${id}`, options);
-        //window.location = '/';
+        const response = fetch(`/bracelets/${id}`, options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service RingsAPI updateRingDesign error:", error);
     }
 };
 
-const deleteRingDesign = async(event, id) =>{
-    event.preventDefault();
+const deleteRingDesign = async(id) =>{
     try{
         const options = {
             method: "DELETE"
         };
-        const respose = fetch(`/rings/${id}`, options);
-        //window.location = '/';
+        const response = fetch(`/rings/${id}`, options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service RingsAPI deleteRingDesign error:", error);

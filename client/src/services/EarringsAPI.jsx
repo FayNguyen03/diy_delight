@@ -27,8 +27,7 @@ const getEarringById = async (id) =>{
 };
 
 
-const createEarringDesign = async (event, detail) =>{
-    event.preventDefault();
+const createEarringDesign = async (detail) =>{
     try{
         const options = {
             method: "POST", 
@@ -37,16 +36,15 @@ const createEarringDesign = async (event, detail) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch('/earrings', options);
-        //window.location = '/';
+        const response = fetch(`/earrings`, options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service EarringsAPI createEarringDesign error:", error);
     }
 };
 
-const updateEarringDesign = async(event, detail, id) =>{
-    event.preventDefault();
+const updateEarringDesign = async(detail, id) =>{
     try{
         const options = {
             method: "PATCH", 
@@ -55,28 +53,27 @@ const updateEarringDesign = async(event, detail, id) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch(`/earrings/${id}`, options);
-        //window.location = '/';
+        const response = fetch(`/earrings/${id}`, options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service EarringsAPI updateEarringDesign error:", error);
     }
 };
 
-const deleteEarringDesign = async(event, id) =>{
-    event.preventDefault();
+const deleteEarringDesign = async( id) =>{
     try{
         const options = {
             method: "DELETE"
         };
-        const respose = fetch(`/earrings/${id}`, options);
-        //window.location = '/';
+        const response = fetch(`/earrings/${id}`, options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service EarringsAPI deleteEarringDesign error:", error);
     }
 };
 
-export const EarringsAPI = {getAllEarringDesigns, createEarringDesign, getEarringById, deleteEarringDesign, updateEarringDesign};
+const EarringsAPI = {getAllEarringDesigns, createEarringDesign, getEarringById, deleteEarringDesign, updateEarringDesign};
 
 export default EarringsAPI;

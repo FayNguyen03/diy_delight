@@ -42,7 +42,7 @@ const getEarringDesignById = async (req, res) =>{
 //POST earrings/
 const createEarringDesign = async (req, res) =>{
     try{
-        const { material, earringStyle, leftEarring, rightEarring, stone, price } = req.query;
+        const { material, earringStyle, leftEarring, rightEarring, stone, price } = req.body;
         const currentTime = formatCurrentDateTime();
         const results = await pool.query(`
             INSERT INTO earringDesign (createdOn, modifiedOn, material, earringStyle, leftEarring, rightEarring, stone, price)
@@ -63,7 +63,7 @@ const updateEarringDesign = async (req, res) => {
     try{
         const id = parseInt(req.params.id);
         const currentTime = formatCurrentDateTime();
-        const { material, earringStyle, leftEarring, rightEarring, stone, price } = req.query;
+        const { material, earringStyle, leftEarring, rightEarring, stone, price } = req.body;
         const results = await pool.query(`
             UPDATE earringDesign SET modifiedOn = $1, material = $2, earringStyle = $3, leftEarring = $4, rightEarring = $5, stone = $6, price= $7 WHERE id = $8`,
             [currentTime, material, earringStyle, leftEarring, rightEarring, stone, price, id]

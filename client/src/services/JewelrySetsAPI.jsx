@@ -26,8 +26,7 @@ const getJewelrySetById = async (id) =>{
     }
 };
 
-const createJewelrySet = async (event, detail) =>{
-    event.preventDefault();
+const createJewelrySet = async (detail) =>{
     try{
         const options = {
             method: "POST", 
@@ -36,16 +35,15 @@ const createJewelrySet = async (event, detail) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch('/jewelrySets', options);
-        //window.location = '/';
+        const response = fetch('/jewelrySets', options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service JewelrySetAPI createJewelrySet error:", error);
     }
 };
 
-const updateJewlerySet = async(event, detail, id) =>{
-    event.preventDefault();
+const updateJewlerySet = async(detail, id) =>{
     try{
         const options = {
             method: "PATCH", 
@@ -54,22 +52,21 @@ const updateJewlerySet = async(event, detail, id) =>{
             },
             body: JSON.stringify(detail)
         };
-        const respose = fetch(`/jewelrySets/${id}`, options);
-        //window.location = '/';
+        const response = fetch(`/jewelrySets/${id}`, options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service JewelrySetAPI updateJewlerySet error:", error);
     }
 };
 
-const deleteJewelrySet = async(event, id) =>{
-    event.preventDefault();
+const deleteJewelrySet = async(id) =>{
     try{
         const options = {
             method: "DELETE"
         };
-        const respose = fetch(`/jewelrySets/${id}`, options);
-        //window.location = '/';
+        const response = fetch(`/jewelrySets/${id}`, options);
+        window.location = '/';
     }
     catch(error){
         console.error("Service JewelrySetAPI deleteJewelrySet error:", error);

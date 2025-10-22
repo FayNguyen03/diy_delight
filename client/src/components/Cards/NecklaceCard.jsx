@@ -30,19 +30,19 @@ const NecklaceCard = (props) => {
                         width: 'min(1100px, 95%)'
                         }}
                     >
-                        <h3 style={{marginTop:0}}>Bracelet {props.keyId}</h3>
+                        <h3 style={{marginTop:0, color:'black'}}>Necklace {props.keyId}</h3>
                         
-                        <div style={{display:'grid', gridTemplateColumns: '100px 1fr', rowGap:8, columnGap:12, alignItems:'start'}}>
-                            <strong>Created</strong><span>{formatTimestamp(props.data.createdOn)}</span>
-                            <strong>Modified</strong><span>{formatTimestamp(props.data.modifiedOn)}</span>
+                        <div style={{display:'grid', gridTemplateColumns: `${props.size}px 1fr`, rowGap:8, columnGap:12, alignItems:'start'}}>
+                            <strong>Created</strong><p>{formatTimestamp(props.data.createdon)}</p>
+                            <strong>Modified</strong><p>{formatTimestamp(props.data.modifiedon)}</p>
 
                             <strong>Material</strong>
                             <div style = {{
                                 backgroundImage: `url(${props.data.material.img})`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
-                                width: '100px',
-                                height: '100px',
+                                width: `${props.size}px`,
+                                height: `${props.size}px`,
                                 border: "2px solid rgba(23, 42, 58, 1)",
                                 cursor: "pointer",
                                 borderRadius: "10%",
@@ -59,8 +59,8 @@ const NecklaceCard = (props) => {
                                 backgroundImage: `url(${props.data.stone.img})`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
-                                width: '100px',
-                                height: '100px',
+                                width: `${props.size}px`,
+                                height: `${props.size}px`,
                                 border: "2px solid rgba(23, 42, 58, 1)",
                                 borderRadius: "10%",
                                 transition: "transform 0.18s ease, box-shadow 0.18s ease, border 0.12s ease",
@@ -76,8 +76,8 @@ const NecklaceCard = (props) => {
                                 backgroundImage:  `url(${props.data.charm.img})`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
-                                width: '100px',
-                                height: '100px',
+                                width: `${props.size}px`,
+                                height: `${props.size}px`,
                                 border: "2px solid rgba(23, 42, 58, 1)",
                                 cursor: "pointer",
                                 borderRadius: "10%",
@@ -90,53 +90,10 @@ const NecklaceCard = (props) => {
                             </div>
 
                             <strong>Price</strong>
-                            <p>{
+                            <p style={{color:'black'}}>{
                                 new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
                                 }
                             </p>
-                        </div>
-                        <div className="button-section" style={{
-                            padding: "30px",
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: "10%",
-                        }}>
-                            <button
-                                style={{
-                                    background: "rgba(23, 42, 58, 1)",
-                                    color: "white",
-                                    fontWeight: "bold",
-                                    fontSize: "18px",
-                                    border: "none",
-                                    padding: "15px 25px",
-                                    borderRadius: "8px",
-                                    cursor: "pointer",
-                                    transition: "background 0.2s",
-                                }}
-                                onMouseOver={(e) => (e.currentTarget.style.background = "transparent", e.currentTarget.style.border = "2px solid rgba(23, 42, 58, 1)")}
-                                onMouseOut={(e) => (e.currentTarget.style.background = "rgba(23, 42, 58, 1)", e.currentTarget.style.border = "none")}
-                            >
-                                Edit
-                            </button>
-                            <button
-                                style={{
-                                    background: "#FF0000",
-                                    color: "white",
-                                    fontWeight: "bold",
-                                    fontSize: "18px",
-                                    border: "none",
-                                    padding: "15px 25px",
-                                    borderRadius: "8px",
-                                    cursor: "pointer",
-                                    transition: "background 0.2s",
-                                }}
-                                onMouseOver={(e) => (e.currentTarget.style.background = "transparent", e.currentTarget.style.border = "2px solid #FF0000")}
-                                onMouseOut={(e) => (e.currentTarget.style.background = "#FF0000", e.currentTarget.style.border = "none")}
-                            >
-                                Delete
-                            </button>
                         </div>
                     </div>
                 </div>
