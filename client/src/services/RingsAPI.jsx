@@ -36,7 +36,7 @@ const createRingDesign = async (detail) =>{
             body: JSON.stringify(detail)
         };
         const response = fetch('/rings', options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service RingsAPI createRingDesign error:", error);
@@ -53,7 +53,7 @@ const updateRingDesign = async(detail, id) =>{
             body: JSON.stringify(detail)
         };
         const response = fetch(`/bracelets/${id}`, options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service RingsAPI updateRingDesign error:", error);
@@ -66,7 +66,7 @@ const deleteRingDesign = async(id) =>{
             method: "DELETE"
         };
         const response = fetch(`/rings/${id}`, options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service RingsAPI deleteRingDesign error:", error);

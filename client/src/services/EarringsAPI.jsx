@@ -37,7 +37,7 @@ const createEarringDesign = async (detail) =>{
             body: JSON.stringify(detail)
         };
         const response = fetch(`/earrings`, options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service EarringsAPI createEarringDesign error:", error);
@@ -54,7 +54,7 @@ const updateEarringDesign = async(detail, id) =>{
             body: JSON.stringify(detail)
         };
         const response = fetch(`/earrings/${id}`, options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service EarringsAPI updateEarringDesign error:", error);
@@ -67,7 +67,7 @@ const deleteEarringDesign = async( id) =>{
             method: "DELETE"
         };
         const response = fetch(`/earrings/${id}`, options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service EarringsAPI deleteEarringDesign error:", error);

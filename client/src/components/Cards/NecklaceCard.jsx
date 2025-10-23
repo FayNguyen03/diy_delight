@@ -7,7 +7,7 @@ const NecklaceCard = (props) => {
         return isNaN(d) ? String(timestamp) : d.toLocaleString();
     };
     return (
-        <div className="bracelet-card" style={{display: "flex", justifyContent: 'center'}}>
+        <div className="necklace-card" style={{display: "flex", justifyContent: 'center'}}>
             
             {props.data && (
                 <div style={{
@@ -54,7 +54,7 @@ const NecklaceCard = (props) => {
                             }}>
                             </div>
 
-                            <strong>Stone</strong>
+                            {props.data.stone && <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><strong>Stone</strong>
                             <div style = {{
                                 backgroundImage: `url(${props.data.stone.img})`,
                                 backgroundSize: 'cover',
@@ -69,9 +69,9 @@ const NecklaceCard = (props) => {
                                 justifyContent: 'center',
                                 overflow: 'hidden'
                             }}>
-                            </div>
+                            </div></div>}
 
-                            <strong>Charm</strong>
+                            {props.data.charm && <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><strong>Charm</strong>
                             <div style = {{
                                 backgroundImage:  `url(${props.data.charm.img})`,
                                 backgroundSize: 'cover',
@@ -87,13 +87,15 @@ const NecklaceCard = (props) => {
                                 justifyContent: 'center',
                                 overflow: 'hidden'
                             }}>
-                            </div>
+                            </div></div>}
 
-                            <strong>Price</strong>
-                            <p style={{color:'black'}}>{
-                                new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
-                                }
-                            </p>
+                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                                <strong>Price</strong>
+                                <p style={{color:"black", fontSize:'15px'}}>{
+                                    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
+                                    }
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

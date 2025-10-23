@@ -36,7 +36,6 @@ const createBraceletDesign = async (detail) =>{
             body: JSON.stringify(detail)
         };
         const response = fetch('/bracelets', options);
-        window.location = '/';
     }
     catch(error){
         console.error("Service BraceletsAPI createBraceletDesign error:", error);
@@ -53,7 +52,6 @@ const updateBraceletDesign = async(detail, id) =>{
             body: JSON.stringify(detail)
         };
         const response = fetch('/bracelets/${id}', options);
-        window.location = '/';
     }
     catch(error){
         console.error("Service BraceletsAPI updateBraceletDesign error:", error);
@@ -66,7 +64,6 @@ const deleteBraceletDesign = async(id) =>{
             method: "DELETE"
         };
         const response = fetch('/bracelets/${id}', options);
-        window.location = '/';
     }
     catch(error){
         console.error("Service BraceletsAPI deleteBraceletDesign error:", error);

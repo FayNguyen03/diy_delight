@@ -7,7 +7,7 @@ const EarringsCard = (props) => {
         return isNaN(d) ? String(timestamp) : d.toLocaleString();
     };
     return (
-        <div className="bracelet-card" style={{display: "flex", justifyContent: 'center'}}>
+        <div className="earring-card" style={{display: "flex", justifyContent: 'center'}}>
             
             {props.data && (
                 <div style={{
@@ -72,17 +72,22 @@ const EarringsCard = (props) => {
                             }}>
                             </div>
 
-                            <strong>Left Earring</strong>
-                            <input type="checkbox" disabled checked={props.data.leftearring }/>
+                            <div style={{display:'flex', flexDirection:'column', gap:'10%'}}>
+                                <strong>Left Earring</strong>
+                                <input type="checkbox" disabled checked={props.data.leftearring }/>
+                            </div>
 
-                            <strong>Right Earring</strong>
-                            <input type="checkbox" disabled checked={props.data.rightearring }/>
-
-                            <strong>Price</strong>
-                            <p style={{color:'black'}}>{
-                                new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
-                                }
-                            </p>
+                            <div style={{display:'flex', flexDirection:'column', gap:'10%'}}>
+                                <strong>Right Earring</strong>
+                                <input type="checkbox" disabled checked={props.data.rightearring }/>
+                            </div>
+                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                                <strong>Price</strong>
+                                <p style={{color:"black", fontSize:'15px'}}>{
+                                    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
+                                    }
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

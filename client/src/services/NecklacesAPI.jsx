@@ -36,7 +36,7 @@ const createNecklaceDesign = async (detail) =>{
             body: JSON.stringify(detail)
         };
         const respose = fetch('/necklaces', options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service NecklacesAPI createNecklaceDesign error:", error);
@@ -53,7 +53,7 @@ const updateNecklaceDesign = async(detail, id) =>{
             body: JSON.stringify(detail)
         };
         const respose = fetch(`/necklaces/${id}`, options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service NecklacesAPI updateNecklaceDesign error:", error);
@@ -66,7 +66,7 @@ const deleteNecklaceDesign = async(id) =>{
             method: "DELETE"
         };
         const respose = fetch(`/necklaces/${id}`, options);
-        window.location = '/';
+        
     }
     catch(error){
         console.error("Service NecklacesAPI deleteNecklaceDesign error:", error);

@@ -17,7 +17,7 @@ const getJewelrySetById = async (id) =>{
     try{
         const response = await fetch(`/jewelrySets/${id}`);
         if(!response.ok){
-            throw new Error(`Failed to fetch jewelry set designs data: ${response.status}`);
+            throw new Error(`Failed to fetch jewelry set data: ${response.status}`);
         }
         return await response.json();
     }
@@ -53,7 +53,7 @@ const updateJewlerySet = async(detail, id) =>{
             body: JSON.stringify(detail)
         };
         const response = fetch(`/jewelrySets/${id}`, options);
-        window.location = '/';
+        //window.location = '/';
     }
     catch(error){
         console.error("Service JewelrySetAPI updateJewlerySet error:", error);

@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../App.css';
-import '../css/Navigation.css';
+import './Navigation.css';
 
 const Navigation = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const closeTimeoutRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setShowDropdown(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setShowDropdown(false);
+    }, 500); 
+  };
 
   return (
     <nav className="nav-bar">
@@ -15,18 +30,21 @@ const Navigation = () => {
         <ul>
           <li
             className="dropdown"
-            onMouseEnter={() => setShowDropdown(true)}
-            onMouseLeave={() => setShowDropdown(false)}
-            >
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <a href="#" className="nav-link">Create Jewelry ▾</a>
-            <ul className="dropdown-menu">
+            {showDropdown && (
+              <ul className="dropdown-menu">
                 <li><a href="/create/bracelet">Bracelet</a></li>
                 <li><a href="/create/earrings">Earrings</a></li>
                 <li><a href="/create/necklace">Necklace</a></li>
                 <li><a href="/create/ring">Ring</a></li>
-            </ul>
-            </li>
-          <li><a href="/create/set" className="nav-link">Add a Jewelry Set</a></li>
+              </ul>
+            )}
+          </li>
+          <li><a href="/jewelrypieces" className="nav-link">View All Pieces</a></li>
+          <li><a href="/" className="nav-link">Create a Jewelry Set</a></li>
           <li><a href="/jewelrysets" className="nav-link">View Jewelry Sets</a></li>
         </ul>
       </div>

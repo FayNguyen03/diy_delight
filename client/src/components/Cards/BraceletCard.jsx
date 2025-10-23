@@ -1,17 +1,33 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import BraceletsAPI from '../../services/BraceletsAPI';
 const BraceletCard = (props) => {
+    const [isLoading, setIsLoading] = useState(true);
+    
     const formatTimestamp = (timestamp) => {
         if (!timestamp) return '';
         const d = new Date(timestamp);
         return isNaN(d) ? String(timestamp) : d.toLocaleString();
     };
+
+    const deleteBracelet = async (id) =>{
+            if (!id) return;
+            if (!window.confirm('Are you sure you want to delete this jewelry piece?')) return;
+            try {
+                setIsLoading(true);
+                await BraceletsAPI.deleteBraceletDesign(id);
+                window.location = '/jewelrypieces'
+            } catch (error) {
+                alert('Failed to delete jewelry piece:' + error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
     return (
         <div className="bracelet-card" style={{display: "flex", justifyContent: 'center'}}>
             
             {props.data && (
                 <div style={{
-                    width: "100%",
+                    width: "300px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -24,7 +40,6 @@ const BraceletCard = (props) => {
                         padding: "30px",
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "center",
                         justifyContent: "center",
                         gap: "5%",
                         width: 'min(1100px, 95%)'
@@ -36,7 +51,7 @@ const BraceletCard = (props) => {
                             <strong>Created</strong><p>{formatTimestamp(props.data.createdon)}</p>
                             <strong>Modified</strong><p>{formatTimestamp(props.data.modifiedon)}</p>
                             <strong>Material</strong>
-                            <div style = {{
+                            <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><div style = {{
                                 backgroundImage: `url(${props.data.material.img})`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
@@ -51,9 +66,9 @@ const BraceletCard = (props) => {
                                 justifyContent: 'center',
                                 overflow: 'hidden'
                             }}>
-                            </div>
+                            </div></div>
 
-                            <strong>Stone</strong>
+                            {props.data.stone && <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><strong>Stone</strong>
                             <div style = {{
                                 backgroundImage: `url(${props.data.stone.img})`,
                                 backgroundSize: 'cover',
@@ -68,9 +83,9 @@ const BraceletCard = (props) => {
                                 justifyContent: 'center',
                                 overflow: 'hidden'
                             }}>
-                            </div>
+                            </div></div>}
 
-                            <strong>Charm</strong>
+                            {props.data.charm && <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><strong>Charm</strong>
                             <div style = {{
                                 backgroundImage:  `url(${props.data.charm.img})`,
                                 backgroundSize: 'cover',
@@ -86,13 +101,15 @@ const BraceletCard = (props) => {
                                 justifyContent: 'center',
                                 overflow: 'hidden'
                             }}>
-                            </div>
+                            </div></div>}
 
-                            <strong>Engraving</strong>
-                            <input type="checkbox" checked={props.data.engraving}/>
-                            
+                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                                <strong>Engraving</strong>
+                                <input type="checkbox" disabled checked={props.data.engraving}/>
+                             </div>
+
                             {props.data.engraving &&
-                                <><input type="text" disabled checked={props.data.engravingContent}/></>}
+                                <div style={{display:'flex', flexDirection:'row', gap:'10%'}}><strong>Content</strong><strong>Content</strong><p>{props.data.engravingcontent}</p></div>}
 
                             <strong>Price</strong>
                             <p style={{color:"black"}}>{

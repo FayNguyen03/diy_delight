@@ -10,8 +10,10 @@ import RingCard from '../components/Cards/RingCard'
 import NecklaceCard from '../components/Cards/NecklaceCard'
 import EarringsCard from '../components/Cards/EarringsCard'
 import '../App.css'
+import { useNavigate } from 'react-router-dom'
 
 const ViewJewelrySets = () => {
+    const navigate = useNavigate();
     const [stoneValue, setStoneValue] = useState([]);
     const [charmValue, setCharmValue] = useState([]);
     const [earringStyleValue, setEarringStyleValue] = useState([]);
@@ -23,6 +25,12 @@ const ViewJewelrySets = () => {
     const [jewelrySetsValue, setJewelrySetsValue] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    const formatTimestamp = (timestamp) => {
+        if (!timestamp) return '';
+        const d = new Date(timestamp);
+        return isNaN(d) ? String(timestamp) : d.toLocaleString();
+    };
+    
     const enrich = (item) => {
         if (!item) return null;
         return {
@@ -47,6 +55,11 @@ const ViewJewelrySets = () => {
         } finally {
             setIsLoading(false);
         }
+    }
+
+    const editJewelrySet = async (id) =>{
+        if (!id) return;
+        navigate(`/edit/${id}`);
     }
 
     // Fetch all details
@@ -95,11 +108,6 @@ const ViewJewelrySets = () => {
         const rId = set.ringid - 1;
         const eId = set.earringid - 1;
 
-        const braceletRaw = braceletValue[bId];
-        const necklaceRaw = necklaceValue[nId];
-        const ringRaw = ringValue[rId];
-        const earringsRaw = earringsValue[eId];
-
         const braceletItem = enrich(braceletValue[bId]);
         const necklaceItem = enrich(necklaceValue[nId]);
         const ringItem = enrich(ringValue[rId]);
@@ -107,7 +115,7 @@ const ViewJewelrySets = () => {
 
         return (
             <div
-                key={set.id ?? set._id}
+                key={set.id}
                 className="jewelry-set"
                 style={{
                 border: '1px solid rgba(0,0,0,0.08)',
@@ -120,22 +128,29 @@ const ViewJewelrySets = () => {
                 <h3 style={{ margin: 0, color:'black'}}>{set.name.toUpperCase()}</h3>
                 <div style={{ fontWeight: 700, fontSize: 20, color:'black'}}>{set.price != null ? `$${set.price}` : '—'}</div>
                 </div>
+                
+                <div style={{ display: 'flex', flexDirection:'column', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+                    <div  style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                        <strong>Created</strong><p>{formatTimestamp(set.createdon)}</p>
 
-                <div style={{ display: 'flex', flexDirection:'row', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+                        <strong>Modified</strong><p>{formatTimestamp(set.modifiedon)}</p>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection:'row', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
                     <div >
                         <BraceletCard data={braceletItem} keyId={bId + 1} size="100"/>
                     </div>
 
                     <div >
-                        <NecklaceCard data={necklaceItem} keyId={nId + 1} size="100"/>
+                        <NecklaceCard  data={necklaceItem} keyId={nId + 1} size="100"/>
                     </div>
 
                     <div >
-                        <RingCard data={ringItem} keyId={rId + 1} size="100"/>
+                        <RingCard  data={ringItem} keyId={rId + 1} size="100"/>
                     </div>
 
                     <div >
-                        <EarringsCard data={earringsItem} keyId={eId + 1} size="100"/>
+                        <EarringsCard  data={earringsItem} keyId={eId + 1} size="100"/>
+                    </div>
                     </div>
                 </div>
                 <div className="button-section" style={{
@@ -147,6 +162,7 @@ const ViewJewelrySets = () => {
                         gap: "10%",
                     }}>
                         <button
+                            onClick={() => editJewelrySet(set.id)}
                             style={{
                                 background: "rgba(23, 42, 58, 1)",
                                 color: "white",
@@ -162,6 +178,24 @@ const ViewJewelrySets = () => {
                             onMouseOut={(e) => (e.currentTarget.style.background = "rgba(23, 42, 58, 1)", e.currentTarget.style.border = "none")}
                         >
                             Edit
+                        </button>
+                        <button
+                            onClick={() => navigate(`/jewelrysets/${set.id}`)}
+                            style={{
+                                background: "rgba(215, 176, 33, 1)",
+                                color: "white",
+                                fontWeight: "bold",
+                                fontSize: "18px",
+                                border: "none",
+                                padding: "15px 25px",
+                                borderRadius: "8px",
+                                cursor: "pointer",
+                                transition: "background 0.2s",
+                            }}
+                            onMouseOver={(e) => (e.currentTarget.style.background = "transparent", e.currentTarget.style.border = "rgba(215, 176, 33, 1)")}
+                            onMouseOut={(e) => (e.currentTarget.style.background = "rgba(215, 176, 33, 1)", e.currentTarget.style.border = "none")}
+                        >
+                            Detail
                         </button>
                         <button
                             onClick={() => deleteJewelrySet(set.id)}

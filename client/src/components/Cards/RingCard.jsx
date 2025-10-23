@@ -54,7 +54,7 @@ const RingCard = (props) => {
                             }}>
                             </div>
 
-                            <strong>Stone</strong>
+                            {props.data.stone && <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><strong>Stone</strong>
                             <div style = {{
                                 backgroundImage: `url(${props.data.stone.img})`,
                                 backgroundSize: 'cover',
@@ -69,19 +69,23 @@ const RingCard = (props) => {
                                 justifyContent: 'center',
                                 overflow: 'hidden'
                             }}>
+                            </div></div>}
+
+                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                                <strong>Engraving</strong>
+                                <input type="checkbox" disabled checked={props.data.engraving}/>
                             </div>
-
-                            <strong>Engraving</strong>
-                            <input type="checkbox" disabled checked={props.data.engraving}/>
                             
-                            {props.data.engraving &&
-                                <><strong>EngravingContent</strong><input type="text" disabled value={props.data.engravingcontent}/></>}
-
-                            <strong>Price</strong>
-                            <p style={{color:'black'}}>{
-                                new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
-                                }
-                            </p>
+                             {props.data.engraving && props.data.engravingcontent &&
+                                <div style={{display:'flex', flexDirection:'row', gap:'10%'}}><strong>Content</strong><p>{props.data.engravingcontent}</p></div>}
+                            <br />
+                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                                <strong>Price</strong>
+                                <p style={{color:"black", fontSize:'15px'}}>{
+                                    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
+                                    }
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
