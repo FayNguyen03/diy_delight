@@ -118,10 +118,12 @@ const ViewJewelrySetDetail = () => {
   const rId = jewelrySetValue.ringid ? jewelrySetValue.ringid - 1 : null;
   const eId = jewelrySetValue.earringid ? jewelrySetValue.earringid - 1 : null;
 
-  const braceletItem = bId != null ? enrich(braceletValue[bId]) : null;
-  const necklaceItem = nId != null ? enrich(necklaceValue[nId]) : null;
-  const ringItem = rId != null ? enrich(ringValue[rId]) : null;
-  const earringsItem = eId != null ? enrich(earringsValue[eId]) : null;
+  const findItem = (arr, id) => arr?.find((x) => Number(x.id) === Number(id)) ?? null;
+
+  const braceletItem = enrich(findItem(braceletValue, jewelrySetValue.braceletid));
+  const necklaceItem = enrich(findItem(necklaceValue, jewelrySetValue.necklaceid));
+  const ringItem = enrich(findItem(ringValue, jewelrySetValue.ringid));
+  const earringsItem = enrich(findItem(earringsValue, jewelrySetValue.earringid));
 
   return (
     <div

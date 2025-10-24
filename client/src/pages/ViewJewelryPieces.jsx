@@ -44,8 +44,6 @@ const CardGrid = ({ data = [], Card, selected, onSelect, materialValue, stoneVal
                 key={item.id}
                 role="button"
                 tabIndex={0}
-                onClick={() => onSelect(item.id)}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(item.id); }}
                 style={{
                 padding: 8,
                 borderRadius: 10,

@@ -145,6 +145,7 @@ const CreateJewelrySet = () => {
       setIsLoading(true);
       await JewelrySetsAPI.createJewelrySet(payload);
       alert(`You created a new jewelry set name ${payload.name}.`);
+      window.location = '/jewelrysets';
     } catch (err) {
       console.error('Create jewelry set failed', err);
       alert('Create failed. See console for details.');

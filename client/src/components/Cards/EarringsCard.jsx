@@ -1,17 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
+import EarringsAPI from '../../services/EarringsAPI';
 
 const EarringsCard = (props) => {
+    const [isLoading, setIsLoading] = useState(true);
     const formatTimestamp = (timestamp) => {
         if (!timestamp) return '';
         const d = new Date(timestamp);
         return isNaN(d) ? String(timestamp) : d.toLocaleString();
     };
+    const deleteEarrings = async (id) =>{
+        if (!id) return;
+        if (!window.confirm('Are you sure you want to delete this jewelry piece?')) return;
+        try {
+            setIsLoading(true);
+            await EarringsAPI.deleteEarringDesign(id);
+            window.location = '/jewelrypieces'
+        } catch (error) {
+            alert('Failed to delete jewelry piece:' + error);
+        } finally {
+            setIsLoading(false);
+        } 
+    };  
     return (
         <div className="earring-card" style={{display: "flex", justifyContent: 'center'}}>
             
             {props.data && (
                 <div style={{
-                    width: "100%",
+                    width: "400px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -32,7 +47,7 @@ const EarringsCard = (props) => {
                     >
                         <h3 style={{marginTop:0, color:'black'}}>Earring(s) {props.keyId}</h3>
                         
-                        <div style={{display:'grid', gridTemplateColumns: `${props.size}px 1fr`, rowGap:8, columnGap:12, alignItems:'start'}}>
+                        <div style={{display:'grid', gridTemplateColumns: `150px 1fr`, rowGap:20, columnGap:20, alignItems:'start'}}>
                             <strong>Created</strong><p>{formatTimestamp(props.data.createdon)}</p>
                             <strong>Modified</strong><p>{formatTimestamp(props.data.modifiedon)}</p>
 
@@ -72,12 +87,12 @@ const EarringsCard = (props) => {
                             }}>
                             </div>
 
-                            <div style={{display:'flex', flexDirection:'column', gap:'10%'}}>
+                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
                                 <strong>Left Earring</strong>
                                 <input type="checkbox" disabled checked={props.data.leftearring }/>
                             </div>
 
-                            <div style={{display:'flex', flexDirection:'column', gap:'10%'}}>
+                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
                                 <strong>Right Earring</strong>
                                 <input type="checkbox" disabled checked={props.data.rightearring }/>
                             </div>
@@ -89,7 +104,43 @@ const EarringsCard = (props) => {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                        <div
+                            className="button-section"
+                            style={{
+                                padding: '30px',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '10%',
+                            }}
+                        >
+                            <button
+                                onClick={() => deleteEarrings(props.data.id)}
+                                style={{
+                                background: '#FF0000',
+                                color: 'white',
+                                fontWeight: 'bold',
+                                fontSize: '18px',
+                                border: 'none',
+                                padding: '15px 25px',
+                                borderRadius: '8px',
+                                cursor: 'pointer',
+                                transition: 'background 0.2s',
+                                }}
+                                onMouseOver={(e) => {
+                                e.currentTarget.style.background = 'transparent';
+                                e.currentTarget.style.border = '2px solid #FF0000';
+                                }}
+                                onMouseOut={(e) => {
+                                e.currentTarget.style.background = '#FF0000';
+                                e.currentTarget.style.border = 'none';
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                        </div>
                 </div>
             )}
         </div>

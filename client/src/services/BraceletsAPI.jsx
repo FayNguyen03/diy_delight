@@ -51,7 +51,7 @@ const updateBraceletDesign = async(detail, id) =>{
             },
             body: JSON.stringify(detail)
         };
-        const response = fetch('/bracelets/${id}', options);
+        const response = fetch(`/bracelets/${id}`, options);
     }
     catch(error){
         console.error("Service BraceletsAPI updateBraceletDesign error:", error);
@@ -63,7 +63,7 @@ const deleteBraceletDesign = async(id) =>{
         const options = {
             method: "DELETE"
         };
-        const response = fetch('/bracelets/${id}', options);
+        const response = fetch(`/bracelets/${id}`, options);
     }
     catch(error){
         console.error("Service BraceletsAPI deleteBraceletDesign error:", error);

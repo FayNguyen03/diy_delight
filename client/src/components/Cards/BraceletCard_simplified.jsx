@@ -34,20 +34,22 @@ const BracelaceCardSimplified = (props) => {
                             {props.data.stone && <div style={{display:'flex', flexDirection:'row', gap:'10%'}}><strong>Stone</strong> 
                             <p>{props.data.stone.name}</p></div>}
 
-                            {props.data.stone && <div style={{display:'flex', flexDirection:'row', gap:'10%'}}><strong>Charm</strong>
+                            {props.data.charm && <div style={{display:'flex', flexDirection:'row', gap:'10%'}}><strong>Charm</strong>
                             <p>{props.data.charm.name}</p></div>}
                             
-                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
-                                <strong>Engraving</strong>
-                                <input type="checkbox" disabled checked={props.data.engraving}/>
+                            <div style={{display:'flex', flexDirection:'column', gap:'10%'}}>
+                                <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                                    <strong>Engraving</strong>
+                                    <input type="checkbox" disabled checked={props.data.engraving}/>
+                                </div>
+                            
+                                {props.data.engraving && props.data.engravingcontent &&
+                                    <div style={{display:'flex', flexDirection:'row', gap:'10%'}}><strong>Content</strong><p>{props.data.engravingcontent}</p></div>}
                             </div>
-
-                            {props.data.engraving && props.data.engravingcontent &&
-                                <div style={{display:'flex', flexDirection:'row', gap:'10%'}}><strong>Content</strong><p>{props.data.engravingcontent}</p></div>}
-
-                            <div style={{display:'flex', flexDirection:'row', gap:'10%'}}>
+                            <div></div>
+                            <div style={{display:'flex', flexDirection:'column', gap:'10%'}}>
                                 <strong>Price</strong>
-                                <p style={{color:"black", fontSize:'15px'}}>{
+                                <p style={{color:"black"}}>{
                                     new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price)
                                     }
                                 </p>

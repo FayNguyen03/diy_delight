@@ -1,24 +1,40 @@
-import React from 'react'
+import React, {useState} from 'react'
+import NecklacesAPI from '../../services/NecklacesAPI';
 
 const NecklaceCard = (props) => {
+    const [isLoading, setIsLoading] = useState(true);
     const formatTimestamp = (timestamp) => {
         if (!timestamp) return '';
         const d = new Date(timestamp);
         return isNaN(d) ? String(timestamp) : d.toLocaleString();
     };
+    const deleteNecklace = async (id) =>{
+        if (!id) return;
+        if (!window.confirm('Are you sure you want to delete this jewelry piece?')) return;
+        try {
+            setIsLoading(true);
+            await NecklacesAPI.deleteNecklaceDesign(id);
+            window.location = '/jewelrypieces'
+        } catch (error) {
+            alert('Failed to delete jewelry piece:' + error);
+        } finally {
+            setIsLoading(false);
+        } 
+    }; 
+
     return (
         <div className="necklace-card" style={{display: "flex", justifyContent: 'center'}}>
             
             {props.data && (
                 <div style={{
-                    width: "100%",
+                    width: "400px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                 }}>
                     <div
                         style={{
-                        background: "rgba(234, 224, 214, 0.2)",
+                        background: "rgba(234, 224, 214, 0.5)",
                         border: "2px solid rgba(23, 42, 58, 1)",
                         borderRadius: "10px",
                         padding: "30px",
@@ -32,7 +48,7 @@ const NecklaceCard = (props) => {
                     >
                         <h3 style={{marginTop:0, color:'black'}}>Necklace {props.keyId}</h3>
                         
-                        <div style={{display:'grid', gridTemplateColumns: `${props.size}px 1fr`, rowGap:8, columnGap:12, alignItems:'start'}}>
+                        <div style={{display:'grid', gridTemplateColumns: `150px 1fr`, rowGap:20, columnGap:20, alignItems:'start'}}>
                             <strong>Created</strong><p>{formatTimestamp(props.data.createdon)}</p>
                             <strong>Modified</strong><p>{formatTimestamp(props.data.modifiedon)}</p>
 
@@ -54,7 +70,7 @@ const NecklaceCard = (props) => {
                             }}>
                             </div>
 
-                            {props.data.stone && <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><strong>Stone</strong>
+                            {props.data.stone && <div style={{display:'flex', flexDirection:'column', gap:'10%', alignItems: 'center'}}><strong>Stone</strong>
                             <div style = {{
                                 backgroundImage: `url(${props.data.stone.img})`,
                                 backgroundSize: 'cover',
@@ -71,7 +87,7 @@ const NecklaceCard = (props) => {
                             }}>
                             </div></div>}
 
-                            {props.data.charm && <div style={{display:'flex', flexDirection:'column', gap:'10%'}}><strong>Charm</strong>
+                            {props.data.charm && <div style={{display:'flex', flexDirection:'column', gap:'10%', alignItems: 'center'}}><strong>Charm</strong>
                             <div style = {{
                                 backgroundImage:  `url(${props.data.charm.img})`,
                                 backgroundSize: 'cover',
@@ -96,6 +112,43 @@ const NecklaceCard = (props) => {
                                     }
                                 </p>
                             </div>
+                        </div>
+
+                        <div
+                            className="button-section"
+                            style={{
+                                padding: '30px',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '10%',
+                            }}
+                        >
+                            <button
+                                onClick={() => deleteNecklace(props.data.id)}
+                                style={{
+                                background: '#FF0000',
+                                color: 'white',
+                                fontWeight: 'bold',
+                                fontSize: '18px',
+                                border: 'none',
+                                padding: '15px 25px',
+                                borderRadius: '8px',
+                                cursor: 'pointer',
+                                transition: 'background 0.2s',
+                                }}
+                                onMouseOver={(e) => {
+                                e.currentTarget.style.background = 'transparent';
+                                e.currentTarget.style.border = '2px solid #FF0000';
+                                }}
+                                onMouseOut={(e) => {
+                                e.currentTarget.style.background = '#FF0000';
+                                e.currentTarget.style.border = 'none';
+                                }}
+                            >
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>

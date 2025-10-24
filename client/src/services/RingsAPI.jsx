@@ -52,7 +52,7 @@ const updateRingDesign = async(detail, id) =>{
             },
             body: JSON.stringify(detail)
         };
-        const response = fetch(`/bracelets/${id}`, options);
+        const response = fetch(`/rings/${id}`, options);
         
     }
     catch(error){

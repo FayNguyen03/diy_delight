@@ -37,7 +37,7 @@ const Navigation = () => {
             {showDropdown && (
               <ul className="dropdown-menu">
                 <li><a href="/create/bracelet">Bracelet</a></li>
-                <li><a href="/create/earrings">Earrings</a></li>
+                <li><a href="/create/earring">Earrings</a></li>
                 <li><a href="/create/necklace">Necklace</a></li>
                 <li><a href="/create/ring">Ring</a></li>
               </ul>

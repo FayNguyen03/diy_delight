@@ -18,22 +18,21 @@ The following **required** functionality is completed:
   - [X]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
   <img src='Database.gif' title='Database' width='' alt='Database' />
 - [X] **Users can view **multiple** features of the `Jewelry Set` they can customize, (bracelet, necklace, ring, and earrings)**
-
 - [X] **Each customizable feature has multiple options to choose from**
-- [ ] **On selecting each option, the displayed visual icon for the `JewelrySet` updates to match the option the user chose.**
-- [ ] **The price of the `JewelrySet` (e.g. car) changes dynamically as different options are selected *OR* The app displays the total price of all features.**
-- [ ] **The visual interface changes in response to at least one customizable feature.**
+- [X] **On selecting each option, the displayed visual icon for the `JewelrySet` updates to match the option the user chose.**
+- [X] **The price of the `JewelrySet` (e.g. car) changes dynamically as different options are selected *OR* The app displays the total price of all features.**
+- [X] **The visual interface changes in response to at least one customizable feature.**
 - [X] **The user can submit their choices to save the item to the list of created `JewelrySet`s.**
 - [X] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
 - [X] **Users can view a list of all submitted `JewelrySet`s.**
 - [X] **Users can edit a submitted `JewelrySet` from the list view of submitted `JewelrySet`s.**
 - [X] **Users can delete a submitted `JewelrySet` from the list view of submitted `JewelrySet`s.**
-- [ ] **Users can update or delete `JewelrySet`s that have been created from the detail page.**
+- [X] **Users can update or delete `JewelrySet`s that have been created from the detail page.**
 
 
 The following **optional** features are implemented:
 
-- [ ] Selecting particular options prevents incompatible options from being selected even before form submission
+- [X] Selecting particular options prevents incompatible options from being selected even before form submission (for each piece of jewelry - bracelet, ring, necklace, earrings - user can just add 1 to the jewelry set)
 
 The following **additional** features are implemented:
 
@@ -43,7 +42,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='DEMO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [Kap](https://getkap.co/)

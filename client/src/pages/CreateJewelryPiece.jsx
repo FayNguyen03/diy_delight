@@ -30,10 +30,10 @@ const CreateJewelryPiece = (props) => {
     const handleCreate = async () =>{
 
         const detail = { material: material + 1, engraving: Boolean(engraving) };
-        if (stone) detail.stone = stone + 1;
-        if (charm) detail.charm = charm + 1;
+        if (stone !== null) detail.stone = stone + 1;
+        if (charm !== null) detail.charm = charm + 1;
         if (earringStyle !== null) detail.earringStyle = earringStyle + 1;
-        if (engraving) detail.engravingcontent = engravingContent + 1;
+        if (engraving) detail.engravingContent = engravingContent;
         if (itemId === 1) {
             detail.leftEarring = Boolean(leftEarring);
             detail.rightEarring = Boolean(rightEarring);
@@ -67,6 +67,7 @@ const CreateJewelryPiece = (props) => {
                 alert(`You created a ring`);
             }
             handleReset();
+            window.location = '/jewelrypieces';
         } catch (err) {
             console.error('Create failed', err);
             alert('Create failed. See console for details.');
