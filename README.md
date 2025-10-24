@@ -23,7 +23,9 @@ The following **required** functionality is completed:
 - [X] **The price of the `JewelrySet` (e.g. car) changes dynamically as different options are selected *OR* The app displays the total price of all features.**
 - [X] **The visual interface changes in response to at least one customizable feature.**
 - [X] **The user can submit their choices to save the item to the list of created `JewelrySet`s.**
-- [X] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
+- [X] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database. (a piece of earrings without left and right earrings)**
+  <img src='warning.gif' title='Warning' width='' alt='Warning' />
+
 - [X] **Users can view a list of all submitted `JewelrySet`s.**
 - [X] **Users can edit a submitted `JewelrySet` from the list view of submitted `JewelrySet`s.**
 - [X] **Users can delete a submitted `JewelrySet` from the list view of submitted `JewelrySet`s.**
@@ -33,6 +35,8 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [X] Selecting particular options prevents incompatible options from being selected even before form submission (for each piece of jewelry - bracelet, ring, necklace, earrings - user can just add 1 to the jewelry set)
+
+  <img src='Not_a_combination.gif' title='Render database' width='' alt='Render database' />
 
 The following **additional** features are implemented:
 
