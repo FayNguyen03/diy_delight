@@ -25,7 +25,6 @@ The following **required** functionality is completed:
 - [X] **The user can submit their choices to save the item to the list of created `JewelrySet`s.**
 - [X] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database. (a piece of earrings without left and right earrings)**
   <img src='warning.gif' title='Warning' width='' alt='Warning' />
-
 - [X] **Users can view a list of all submitted `JewelrySet`s.**
 - [X] **Users can edit a submitted `JewelrySet` from the list view of submitted `JewelrySet`s.**
 - [X] **Users can delete a submitted `JewelrySet` from the list view of submitted `JewelrySet`s.**
@@ -47,7 +46,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented required features:
 
 <img src='DEMO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
+<img src='DEMO2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [Kap](https://getkap.co/)
 <!-- Recommended tools:
